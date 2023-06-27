@@ -10,18 +10,19 @@ body {
 
 
 #title {
-  color:coral;
-  background-color:darkolivegreen;
+  color:rgb(149, 199, 50);
+  background-color:rgb(146, 50, 50) ;
   position: absolute;
   width: 100%;
   text-align: center;
-  font-family: monospace;
+  font-family: monospace!important;
   font-size: 1.5em;
 }
 
 #subtitle {
+  color:rgb(149, 199, 50);
   position: relative;
   text-align: center;
-  font-family: monospace;
+  font-family: monospace!important;
   font-size: 1.25em;
 }

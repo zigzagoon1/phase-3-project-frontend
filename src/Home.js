@@ -1,6 +1,6 @@
 import React from "react";
 
-function GardenArea() {
+function Home() {
     return (
         <div>
 
@@ -8,4 +8,4 @@ function GardenArea() {
     )
 }
 
-export default GardenArea;
+export default Home;
