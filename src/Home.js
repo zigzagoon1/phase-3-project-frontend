@@ -4,9 +4,9 @@ import NavBar from "./NavBar";
 
 function Home() {
     return (
-        <div>
-             <Title />
-            <NavBar />
+        <div className="">
+            <Title className=""/>
+            <NavBar className=""/>
         </div>
     )
 }

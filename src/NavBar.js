@@ -2,14 +2,19 @@ import React from "react";
 import {NavLink} from 'react-router-dom';
 function NavBar() {
     return (
-        <div className="container">
-            <div className="row">
-                <div className="nav-item">
-                    <nav className="navbar nav-tabs justify-content-center">
-                    <NavLink className="nav-link"to="/">Home</NavLink>
-
-                    </nav>
+        <div>
+            <div className="container">
+              <nav className="row navbar nav-pills justify-content-center">
+                <div className="col-2 nav-item">
+                    <NavLink className="nav-link text-center"to="/">Home</NavLink>
                 </div>
+                <div className="col-3 nav-item">
+                    <NavLink className="nav-link text-center" to="/plants">My Plants</NavLink>
+                </div>
+                <div className="col-3 nav-item">
+                    <NavLink className="nav-link text-center" to="/areas">My Garden</NavLink>
+                </div>
+             </nav>
             </div>
 
 
