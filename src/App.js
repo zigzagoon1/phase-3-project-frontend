@@ -13,12 +13,13 @@ function App() {
   const [plants, setPlants] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3000/areas')
+    fetch('http://localhost:9292/areas')
     .then(r => r.json())
     .then((areas) => {
+      console.log(areas);
       setGardenAreas(areas);
     })
-  })
+  }, [])
 
   useEffect(() => {
     fetch('http://localhost:3000/plants')
