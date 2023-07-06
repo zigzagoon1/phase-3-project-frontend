@@ -3,9 +3,14 @@ import React from "react";
 //size (width, length, height),
 //location 
 function GardenArea({id, location, length, width }) {
+    function mouseHover() {
+
+    }
     return (
-        <div>
-            <h1>{location}</h1>
+        <div id={location} className="col-4 my-5 mx-1 border border-top py-5 border-dark km-shadow">
+            <div>
+
+            </div>
         </div>
     )
 }

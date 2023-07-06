@@ -12,23 +12,18 @@ body {
 #title {
   color:rgb(149, 199, 50);
   background-color:rgb(146, 50, 50) ;
-  position: absolute;
-  width: 100%;
-  text-align: center;
+  /* position: absolute; */
+  /* width: 100%; */
+  /* text-align: center; */
   font-family: monospace!important;
   font-size: 1.5em;
 }
 
-.navbar {
+#Upper {
   position: relative;
-  top: 80px;
+  top: 100px;
 }
 
-/* #subtitle {
-  color:rgb(149, 199, 50);
-  position: relative;
-  text-align: center;
-  font-family: monospace!important;
-  font-size: 1em !important;
-} */
-
+.km-shadow {
+  box-shadow: inset 0px 0px 6px 5px rgba(0,0,0,.15) !important
+}

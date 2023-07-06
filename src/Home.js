@@ -4,7 +4,7 @@ import NavBar from "./NavBar";
 
 function Home() {
     return (
-        <div className="">
+        <div className="container-fluid">
             <Title className=""/>
             <NavBar className=""/>
         </div>

@@ -20,21 +20,21 @@ function App() {
       setGardenAreas(areas);
     })
   }, [])
-
+//Switch below useEffect to providing plant details with area details 
   useEffect(() => {
-    fetch('http://localhost:3000/plants')
+    fetch('http://localhost:9292/plants')
     .then(r => r.json())
     .then((plants) => {
       setPlants(plants);
     })
-  })
+  }, [])
   return (
     <React.Fragment>
-      <Home className="container"/>
+      <Home/>
       <Routes>
         <Route path="/" element={<MyGarden areas={areas} plants={plants}/>} />
         <Route path="/plants" element={<Plants plants={plants}/>} />
-        <Route path="/areas" element={<GardenAreas areas={areas}/>} />
+        <Route path="/areas" element={<GardenAreas areas={areas} plants={plants}/>} />
       </Routes>
     </React.Fragment>
   );

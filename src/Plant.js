@@ -6,10 +6,11 @@ import React from "react";
 //hardiness zones?,
 //bloom time?,
 //height?
-function Plant() {
+function Plant({name, latin_name, height, width, hardiness_zones, garden_location, description}) {
+    
     return (
         <div>
-
+            <h1>{name}</h1>
         </div>
     )
 }
