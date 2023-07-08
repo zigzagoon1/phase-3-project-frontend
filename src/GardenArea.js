@@ -1,15 +1,58 @@
 import React from "react";
+import AreaPlant from "./AreaPlant";
+import AreaEmpty from "./AreaEmpty";
+import { useState, useEffect } from "react";
 //single garden area, contains info on
 //size (width, length, height),
 //location 
-function GardenArea({id, location, length, width }) {
-    function mouseHover() {
+function GardenArea({plants, id, number_of_plants, handleEmptyClick}) {
 
+    function handleEmptyAreaClicked(slot_location_in_area) {
+        handleEmptyClick(id, slot_location_in_area);
     }
-    return (
-        <div id={location} className="col-4 my-5 mx-1 border border-top py-5 border-dark km-shadow">
-            <div>
+    const plantElements = plants.map((plant) => {
+        return <AreaPlant key={plant.id} plant={plant} location_in_area={plant.location_in_area}/>;
+    })
 
+    let totalEmptySpaces = Array.apply(null, Array(number_of_plants - plants.length)).map(function() {});
+    let i = 0;
+    let j = number_of_plants - plants.length;
+
+    const emptyPlantElements = totalEmptySpaces.map((empty, index) => {
+        if (i >= 5) {
+            i = 0;
+        }
+        else if (i < 5) {
+        i++;
+
+        }
+        j++;
+        if (j === 0) {
+            j++;
+        }
+        return <AreaEmpty key={index} location_in_area={i} garden_id={id} empty_area_clicked={handleEmptyAreaClicked}/>
+
+    })
+    const anyEmpty = plants.length !== number_of_plants ? emptyPlantElements : null;
+
+    
+    // const empties = []
+    // for (let i = plants.length + 1, p = 0, e = 20 - plants.length; i < totalEmptySpaces; i++, p++) {
+    //     if (p >= 5) {
+    //     p = 0;
+    // }
+    //     empties.push(<AreaEmpty key={i} location_in_area={p} garden_area={i}/>)
+    //     console.log(empties.length)
+    // }
+    
+
+
+
+
+    return (
+        <div className="col-4 my-5 mx-1 border border-top border-dark km-shadow">
+            <div className="container-fluid">
+                <div className="row justify-content-around">{plantElements} {anyEmpty} </div>
             </div>
         </div>
     )
