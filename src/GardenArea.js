@@ -5,11 +5,8 @@ import { useState, useEffect } from "react";
 //single garden area, contains info on
 //size (width, length, height),
 //location 
-function GardenArea({plants, id, number_of_plants, handleEmptyClick}) {
+function GardenArea({plants, id, number_of_plants}) {
 
-    function handleEmptyAreaClicked(slot_location_in_area) {
-        handleEmptyClick(id, slot_location_in_area);
-    }
     const plantElements = plants.map((plant) => {
         return <AreaPlant key={plant.id} plant={plant} location_in_area={plant.location_in_area}/>;
     })
@@ -30,7 +27,7 @@ function GardenArea({plants, id, number_of_plants, handleEmptyClick}) {
         if (j === 0) {
             j++;
         }
-        return <AreaEmpty key={index} location_in_area={i} garden_id={id} empty_area_clicked={handleEmptyAreaClicked}/>
+        return <AreaEmpty key={index} location_in_area={plants.length + i} garden_id={id} />
 
     })
     const anyEmpty = plants.length !== number_of_plants ? emptyPlantElements : null;
@@ -51,6 +48,7 @@ function GardenArea({plants, id, number_of_plants, handleEmptyClick}) {
 
     return (
         <div className="col-4 my-5 mx-1 border border-top border-dark km-shadow">
+            <h3>{id}</h3>
             <div className="container-fluid">
                 <div className="row justify-content-around">{plantElements} {anyEmpty} </div>
             </div>

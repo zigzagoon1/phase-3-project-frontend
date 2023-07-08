@@ -5,6 +5,7 @@ import Plants from './Plants.js';
 import GardenAreas from './GardenAreas.js';
 import {Routes, Route } from 'react-router-dom';
 import {useState, useEffect} from 'react';
+import AddPlantForm from './AddPlantForm.js';
 
 //TODO: ability to add features to garden area (post-course)
 //TODO: ability to edit shape of garden (post-course)
@@ -35,6 +36,7 @@ function App() {
         <Route path="/" element={<MyGarden areas={areas} plants={plants}/>} />
         <Route path="/plants" element={<Plants plants={plants}/>} />
         <Route path="/areas" element={<GardenAreas areas={areas} plants={plants}/>} />
+        <Route path="/add_plant" element={<AddPlantForm areas={areas}/>} />
       </Routes>
     </React.Fragment>
   );
