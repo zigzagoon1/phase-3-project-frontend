@@ -29,14 +29,34 @@ function App() {
       setPlants(plants);
     })
   }, [])
+
+  function handleAddPlant(newPlant) {
+      console.log(newPlant);
+      fetch('http://localhost:9292/plants', {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newPlant)
+      })
+      .then(res => res.json())
+      .then(newPlant => 
+        {
+          console.log(newPlant)
+        const newPlants = [...plants, newPlant];
+        setPlants(newPlants);
+        })
+  }
+
+  
+
   return (
     <React.Fragment>
       <Home/>
       <Routes>
         <Route path="/" element={<MyGarden areas={areas} plants={plants}/>} />
         <Route path="/plants" element={<Plants plants={plants}/>} />
-        <Route path="/areas" element={<GardenAreas areas={areas} plants={plants}/>} />
-        <Route path="/add_plant" element={<AddPlantForm areas={areas}/>} />
+        <Route path="/areas" element={<GardenAreas areas={areas} plants={plants} addNewPlant={handleAddPlant}/>} />
       </Routes>
     </React.Fragment>
   );

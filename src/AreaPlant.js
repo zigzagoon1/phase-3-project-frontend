@@ -4,7 +4,7 @@ function AreaPlant({name, plant, location_in_area}) {
     //const [area_location, setAreaLocation] = useState(location_in_area);
     let bootstrap = "col-6 border px-auto py-2";
     if (location_in_area === 3) {
-        bootstrap = "col-12 border px-auto py-2";
+        bootstrap = "col-12 border px-auto py-3";
     }
     return (
         <div className={bootstrap}>
