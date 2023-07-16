@@ -1,9 +1,7 @@
 import React from "react";
-import { useState } from "react";
-function AreaPlant({name, plant, location_in_area}) {
-    //const [area_location, setAreaLocation] = useState(location_in_area);
+function AreaPlant({plant}) {
     let bootstrap = "col-6 border px-auto py-2";
-    if (location_in_area === 3) {
+    if (plant.location_in_area === 3) {
         bootstrap = "col-12 border px-auto py-3";
     }
     return (

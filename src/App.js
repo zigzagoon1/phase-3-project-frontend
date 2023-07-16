@@ -5,7 +5,6 @@ import Plants from './Plants.js';
 import GardenAreas from './GardenAreas.js';
 import {Routes, Route } from 'react-router-dom';
 import {useState, useEffect} from 'react';
-import AddPlantForm from './AddPlantForm.js';
 
 //TODO: ability to add features to garden area (post-course)
 //TODO: ability to edit shape of garden (post-course)
@@ -17,7 +16,6 @@ function App() {
     fetch('http://localhost:9292/areas')
     .then(r => r.json())
     .then((areas) => {
-      console.log(areas);
       setGardenAreas(areas);
     })
   }, [])
@@ -26,6 +24,7 @@ function App() {
     fetch('http://localhost:9292/plants')
     .then(r => r.json())
     .then((plants) => {
+      console.log(plants);
       setPlants(plants);
     })
   }, [])
@@ -42,10 +41,10 @@ function App() {
       .then(res => res.json())
       .then(newPlant => 
         {
-          console.log(newPlant)
         const newPlants = [...plants, newPlant];
         setPlants(newPlants);
         })
+        console.log(plants);
   }
 
   

@@ -6,11 +6,14 @@ import React from "react";
 //hardiness zones?,
 //bloom time?,
 //height?
-function Plant({name, latin_name, height, width, hardiness_zones, garden_location, description}) {
-    
+function Plant({plant, onShowForm}) {
+    function showForm() {
+        onShowForm(plant);
+    }
     return (
-        <div>
-            <h1>{name}</h1>
+        <div className="row between py-2">
+            <h1 className="col-4">{plant.name}</h1>
+            <button className="btn btn-success col-3" onClick={showForm}>Edit Plant</button>
         </div>
     )
 }
