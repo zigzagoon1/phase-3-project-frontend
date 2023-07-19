@@ -61,14 +61,16 @@ function App() {
     })
   }
 
-  
+  function deletePlant(plant) {
+    
+  }
 
   return (
     <React.Fragment>
       <Home/>
       <Routes>
         <Route path="/" element={<MyGarden areas={areas} plants={plants}/>} />
-        <Route path="/plants" element={<Plants plants={plants} editPlant={handleEditPlant}/>} />
+        <Route path="/plants" element={<Plants plants={plants} editPlant={handleEditPlant} handleDeletePlant={deletePlant}/>} />
         <Route path="/areas" element={<GardenAreas areas={areas} plants={plants} addNewPlant={handleAddPlant}/>} />
       </Routes>
     </React.Fragment>

@@ -34,14 +34,15 @@ function AddPlantForm( {editOrAddPlant, plant, deletePlant} ) {
     <Button className="col-2 m-2 mx-4 p-1 btn btn-danger" onClick={handleDeletePlant}>Delete Plant</Button>
     :
     <div></div>
-    let message = ("Please enter a plant name, garden area identifier, and location identifier within the garden area before submitting the form. The first three sections must have a value in order to add a plant.")
+    let message;
 
     function handleSubmit(e) {
         e.preventDefault();
         const newPlant = {garden_area_id: values.garden_area_id, name: values.name, location_in_area: values.location_in_area,
             latin_name: values.latin_name, max_height: values.max_height, max_width: values.max_width, 
             hardiness_zones: values.hardiness_zones, description: values.description, id: values.id}
-        if (newPlant.garden_area === "" || newPlant.plant_name === "" || newPlant.location_in_area === "") {
+        if (newPlant.garden_area_id === "" || newPlant.name === "" || newPlant.location_in_area === "") {
+            message = "Please enter a plant name, garden area identifier, and location identifier within the garden area before submitting the form. The first three sections must have a value in order to add a plant."
             setShowAlert(true);
         }
         else {
@@ -61,7 +62,13 @@ function AddPlantForm( {editOrAddPlant, plant, deletePlant} ) {
     }
 
     function handleDeletePlant(plant) {
+        if (plant !== null && plant !== undefined ) {
         deletePlant(plant);
+        }
+        else {
+            message = "No plant selected. Please return to the plants page and select a plant to delete."
+            setShowAlert(true);
+        }
     }
 
 
