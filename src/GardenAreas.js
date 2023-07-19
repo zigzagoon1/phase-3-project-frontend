@@ -16,12 +16,16 @@ function GardenAreas({areas, plants, addNewPlant}) {
        width={area.width} plants={area.plants} number_of_plants={area.number_of_plants}/>
     })
     function handleAddNewPlant(plant) {
+        if (plant.id === null || plant.id === undefined) {
+            plant.id = plants.length + 1;
+        }
+        console.log(plant.id);
         addNewPlant(plant);
         setShowForm(false)
     }
 
     const form = <div className="row text-center">
-    <PlantForm addNewPlant={handleAddNewPlant} />
+    <PlantForm editOrAddPlant={handleAddNewPlant} />
     </div>
 
     function onFormButtonClick() {

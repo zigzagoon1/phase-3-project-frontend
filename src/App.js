@@ -30,7 +30,6 @@ function App() {
   }, [])
 
   function handleAddPlant(newPlant) {
-      console.log(newPlant);
       fetch('http://localhost:9292/plants', {
         method: "POST",
         headers: {
@@ -47,6 +46,21 @@ function App() {
         console.log(plants);
   }
 
+  function handleEditPlant(plant) {
+    fetch(`http://localhost:9292/plants/${plant.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(plant),
+    })
+    .then(res => res.json())
+    .then(plant => {
+      console.log (plant);
+
+    })
+  }
+
   
 
   return (
@@ -54,7 +68,7 @@ function App() {
       <Home/>
       <Routes>
         <Route path="/" element={<MyGarden areas={areas} plants={plants}/>} />
-        <Route path="/plants" element={<Plants plants={plants}/>} />
+        <Route path="/plants" element={<Plants plants={plants} editPlant={handleEditPlant}/>} />
         <Route path="/areas" element={<GardenAreas areas={areas} plants={plants} addNewPlant={handleAddPlant}/>} />
       </Routes>
     </React.Fragment>

@@ -9,7 +9,6 @@ function GardenArea({plants, id, number_of_plants}) {
     let totalSpaces = Array.apply(null, Array(number_of_plants)).map(function() {});
     let i = -1;
     plants = plants.sort((a, b) => a.location_in_area > b.location_in_area);
-    console.log(plants);
     const areaElements = totalSpaces.map(() => {
         i++;
         if (plants.length > 0 && plants[i] !== undefined) {
