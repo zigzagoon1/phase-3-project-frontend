@@ -19,15 +19,6 @@ function App() {
       setGardenAreas(areas);
     })
   }, [])
-//Switch below useEffect to providing plant details with area details 
-  useEffect(() => {
-    fetch('http://localhost:9292/plants')
-    .then(r => r.json())
-    .then((plants) => {
-      console.log(plants);
-      setPlants(plants);
-    })
-  }, [])
 
   function handleAddPlant(newPlant) {
       fetch('http://localhost:9292/plants', {
@@ -43,7 +34,6 @@ function App() {
         const newPlants = [...plants, newPlant];
         setPlants(newPlants);
         })
-        console.log(plants);
   }
 
   function handleEditPlant(plant) {
@@ -56,13 +46,20 @@ function App() {
     })
     .then(res => res.json())
     .then(plant => {
-      console.log (plant);
 
     })
   }
 
-  function deletePlant(plant) {
-    
+  function handleDeletePlant(plant) {
+    fetch(`http://localhost:9292/plants/${plant.id}`, {
+      method: "DELETE"
+    })
+    .then(() => {
+      const filteredPlants = plants.filter(x => x.id !== plant.id);
+      setPlants(filteredPlants);
+  })
+
+
   }
 
   return (
@@ -70,8 +67,8 @@ function App() {
       <Home/>
       <Routes>
         <Route path="/" element={<MyGarden areas={areas} plants={plants}/>} />
-        <Route path="/plants" element={<Plants plants={plants} editPlant={handleEditPlant} handleDeletePlant={deletePlant}/>} />
-        <Route path="/areas" element={<GardenAreas areas={areas} plants={plants} addNewPlant={handleAddPlant}/>} />
+        <Route path="/areas" element={<GardenAreas areas={areas} addNewPlant={handleAddPlant} 
+        editPlant={handleEditPlant} deletePlant={handleDeletePlant}/>} />
       </Routes>
     </React.Fragment>
   );

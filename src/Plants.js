@@ -5,7 +5,7 @@ import { useState } from "react";
 //my plants area- show plants owned by user and more details about each plant
 
 
-function Plants({plants, editPlant, handleDeletePlant}) {
+function Plants({plants, editPlant, deletePlant}) {
     const [form, setForm] = useState(<div className="row text-center">
     <PlantForm addNewPlant={handleEditPlant}/>
     </div>)
@@ -22,7 +22,7 @@ function Plants({plants, editPlant, handleDeletePlant}) {
     }
 
     function deletePlantCallback(plant) {
-        handleDeletePlant(plant);
+        deletePlant(plant);
     }
 
     const plantElements = plants.map((plant) => {

@@ -1,11 +1,10 @@
 import React from "react";
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import AlertMessage from "./AlertMessage";
 
 
-function AddPlantForm( {editOrAddPlant, plant, deletePlant} ) {
+function PlantForm( {addPlant, editPlant, plant, showDelete, deletePlant} ) {
     const defaultValues = !plant ? {
         garden_area_id: "",
         name: "",
@@ -29,15 +28,19 @@ function AddPlantForm( {editOrAddPlant, plant, deletePlant} ) {
 
     const [values, setValues] = useState(defaultValues);
     const [showAlert, setShowAlert] = useState(false);
-    const loc = useLocation();
-    let btn = loc.pathname === "/plants" ? 
+
+    console.log(showDelete)
+
+    let btn =  showDelete ? 
     <Button className="col-2 m-2 mx-4 p-1 btn btn-danger" onClick={handleDeletePlant}>Delete Plant</Button>
-    :
-    <div></div>
+    : <div></div>
     let message;
 
     function handleSubmit(e) {
         e.preventDefault();
+        if (plant) {
+            
+        }
         const newPlant = {garden_area_id: values.garden_area_id, name: values.name, location_in_area: values.location_in_area,
             latin_name: values.latin_name, max_height: values.max_height, max_width: values.max_width, 
             hardiness_zones: values.hardiness_zones, description: values.description, id: values.id}
@@ -46,7 +49,7 @@ function AddPlantForm( {editOrAddPlant, plant, deletePlant} ) {
             setShowAlert(true);
         }
         else {
-            editOrAddPlant(newPlant);
+            addPlant(newPlant);
         }
     }
     function handleHideModal() {
@@ -61,8 +64,9 @@ function AddPlantForm( {editOrAddPlant, plant, deletePlant} ) {
         });
     }
 
-    function handleDeletePlant(plant) {
+    function handleDeletePlant() {
         if (plant !== null && plant !== undefined ) {
+
         deletePlant(plant);
         }
         else {
@@ -104,4 +108,4 @@ return (
     )
 }
 
-export default AddPlantForm;
+export default PlantForm;

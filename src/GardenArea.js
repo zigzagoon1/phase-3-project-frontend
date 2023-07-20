@@ -4,19 +4,23 @@ import AreaEmpty from "./AreaEmpty";
 //single garden area, contains info on
 //size (width, length, height),
 //location 
-function GardenArea({plants, id, number_of_plants}) {
+function GardenArea({plants, id, number_of_plants, showForm}) {
 
+    function onShowForm(showDeleteOrNot, plant) {
+        showForm(showDeleteOrNot, plant);
+    }
     let totalSpaces = Array.apply(null, Array(number_of_plants)).map(function() {});
     let i = -1;
-    plants = plants.sort((a, b) => a.location_in_area > b.location_in_area);
+    plants = plants.sort((a, b) => a.location_in_area <= b.location_in_area ? -1 : 1);
+    console.log(plants);
     const areaElements = totalSpaces.map(() => {
         i++;
         if (plants.length > 0 && plants[i] !== undefined) {
             if (plants[i].location_in_area <= number_of_plants) {
-                return <AreaPlant key={plants[i].id} plant={plants[i]}/>;
+                return <AreaPlant key={plants[i].id} plant={plants[i]} showForm={onShowForm}/>;
             }
         }
-        return <AreaEmpty key={i} location_in_area={i + 1} garden_id={id} />
+        return <AreaEmpty key={i} location_in_area={i + 1} garden_id={id} showForm={onShowForm} />
     })
     
     return (
