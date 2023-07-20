@@ -6,13 +6,12 @@ import AreaEmpty from "./AreaEmpty";
 //location 
 function GardenArea({plants, id, number_of_plants, showForm}) {
 
-    function onShowForm(showDeleteOrNot, plant) {
-        showForm(showDeleteOrNot, plant);
+    function onShowForm(showDeleteOrNot, plant, garden_id) {
+        showForm(showDeleteOrNot, plant, garden_id);
     }
     let totalSpaces = Array.apply(null, Array(number_of_plants)).map(function() {});
     let i = -1;
     plants = plants.sort((a, b) => a.location_in_area <= b.location_in_area ? -1 : 1);
-    console.log(plants);
     const areaElements = totalSpaces.map(() => {
         i++;
         if (plants.length > 0 && plants[i] !== undefined) {

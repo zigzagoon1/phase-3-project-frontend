@@ -4,10 +4,11 @@ import { Button } from "react-bootstrap";
 import AlertMessage from "./AlertMessage";
 
 
-function PlantForm( {addPlant, editPlant, plant, showDelete, deletePlant, location_id} ) {
+function PlantForm( {addPlant, editPlant, plant, showDelete, deletePlant, location_id, garden_id} ) {
     const location = location_id ? location_id : "";
+    const garden = garden_id ? garden_id : "";
     const defaultValues = !plant ? {
-        garden_area_id: "",
+        garden_area_id: garden,
         name: "",
         location_in_area: location,
         latin_name: "",

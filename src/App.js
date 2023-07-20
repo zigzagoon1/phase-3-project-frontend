@@ -13,12 +13,16 @@ function App() {
   const [plants, setPlants] = useState([]);
 
   useEffect(() => {
+    fetchAreas();
+  }, [])
+
+  function fetchAreas() {
     fetch('http://localhost:9292/areas')
     .then(r => r.json())
     .then((areas) => {
       setGardenAreas(areas);
     })
-  }, [])
+  }
 
   function handleAddPlant(newPlant) {
       fetch('http://localhost:9292/plants', {
@@ -29,11 +33,9 @@ function App() {
         body: JSON.stringify(newPlant)
       })
       .then(res => res.json())
-      .then((newPlant) => 
-        {
-        const newPlants = [...plants, newPlant];
-        setPlants(newPlants);
-        })
+      .then(() => {
+        fetchAreas();
+      })
   }
 
   function handleEditPlant(plant) {
@@ -46,8 +48,8 @@ function App() {
       body: JSON.stringify(plant)
     })
     .then(res => res.json())
-    .then((plant) => {
-      console.log(plant)
+    .then(() => {
+      fetchAreas()
     })
   }
 
@@ -56,8 +58,7 @@ function App() {
       method: "DELETE"
     })
     .then(() => {
-      const filteredPlants = plants.filter(x => x.id !== plant.id);
-      setPlants(filteredPlants);
+    fetchAreas();
   })
 
 

@@ -9,16 +9,17 @@ import {Button} from 'react-bootstrap'
 function GardenAreas({areas, addNewPlant, editPlant, deletePlant}) {
     const [showForm, setShowForm] = useState(false);
     const [form, setForm] = useState(<div className="row text-center"> <PlantForm addPlant={handleAddNewPlant} showDelete={false} /> </div>)
-    function onShowForm(showDelete, plant) {
-        console.log(plant)
+    function onShowForm(showDelete, plant, garden_id) {
         if (showDelete) {
             setForm(<div className="row text-center">
-                <PlantForm showDelete={showDelete} editPlant={onEditPlant} deletePlant={handleDelete} plant={plant}/>
+                <PlantForm showDelete={showDelete} editPlant={onEditPlant} 
+                deletePlant={handleDelete} plant={plant}/>
             </div>)
         }
         else if (plant > 0 && plant < 6) {
             setForm(<div className="row text-center">
-                <PlantForm addPlant={handleAddNewPlant} showDelete={false} location_id={plant} />
+                <PlantForm addPlant={handleAddNewPlant} showDelete={false} 
+                location_id={plant} garden_id={garden_id}/>
             </div>)
         }
         setShowForm(true);
@@ -26,9 +27,11 @@ function GardenAreas({areas, addNewPlant, editPlant, deletePlant}) {
     
     function handleDelete(plant) {
         deletePlant(plant)
+        setShowForm(false);
     }
     function onEditPlant(plant) {
         editPlant(plant)
+        setShowForm(false);
     }
     const areaElements = areas.map((area) => {
        return <GardenArea key={area.id} id={area.id} location={area.location} length={area.length} 
