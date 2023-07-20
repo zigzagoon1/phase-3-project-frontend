@@ -29,7 +29,7 @@ function App() {
         body: JSON.stringify(newPlant)
       })
       .then(res => res.json())
-      .then(newPlant => 
+      .then((newPlant) => 
         {
         const newPlants = [...plants, newPlant];
         setPlants(newPlants);
@@ -37,16 +37,17 @@ function App() {
   }
 
   function handleEditPlant(plant) {
+    console.log(plant);
     fetch(`http://localhost:9292/plants/${plant.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(plant),
+      body: JSON.stringify(plant)
     })
     .then(res => res.json())
-    .then(plant => {
-
+    .then((plant) => {
+      console.log(plant)
     })
   }
 

@@ -10,9 +10,15 @@ function GardenAreas({areas, addNewPlant, editPlant, deletePlant}) {
     const [showForm, setShowForm] = useState(false);
     const [form, setForm] = useState(<div className="row text-center"> <PlantForm addPlant={handleAddNewPlant} showDelete={false} /> </div>)
     function onShowForm(showDelete, plant) {
+        console.log(plant)
         if (showDelete) {
             setForm(<div className="row text-center">
                 <PlantForm showDelete={showDelete} editPlant={onEditPlant} deletePlant={handleDelete} plant={plant}/>
+            </div>)
+        }
+        else if (plant > 0 && plant < 6) {
+            setForm(<div className="row text-center">
+                <PlantForm addPlant={handleAddNewPlant} showDelete={false} location_id={plant} />
             </div>)
         }
         setShowForm(true);

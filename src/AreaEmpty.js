@@ -2,10 +2,10 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import { useState } from "react";
 import PlantForm from "./PlantForm";
-function AreaEmpty({location_in_area, showForm}) {
+function AreaEmpty({garden_id, location_in_area, showForm}) {
 
     function showFormOnClick() {
-        showForm(false);
+        showForm(false, location_in_area, garden_id);
     }
 
     let bootstrap = "col-6 border px-auto py-3 text-center btn-danger";
