@@ -12,21 +12,24 @@ function GardenArea({plants, id, number_of_plants, showForm}) {
     let totalSpaces = Array.apply(null, Array(number_of_plants)).map(function() {});
     let i = -1;
     plants = plants.sort((a, b) => a.location_in_area <= b.location_in_area ? -1 : 1);
+    const locations = [];
+    for (let j = 0; j < plants.length; j++) {
+        locations.push(plants[j].location_in_area);
+        
+    }
+    
     const areaElements = totalSpaces.map(() => {
         i++;
-        const locations = [];
-        for (let j = 0; j < plants.length; j++) {
-            locations.push(plants[j].location_in_area);
-        }
+
+
         if (!locations.find(x => x === i + 1)) {
+            console.log("didn't find match")
             return <AreaEmpty key={i} location_in_area={i + 1} garden_id={id} showForm={onShowForm} />
         }
-        if (plants.length > 0 && plants[i] !== undefined) {
-            if (plants[i].location_in_area <= number_of_plants) {
-                return <AreaPlant key={plants[i].id} plant={plants[i]} showForm={onShowForm}/>;
-            }
+        else {
+            const plant = plants.find(x => x.location_in_area === i + 1)
+            return <AreaPlant key={plant.id} plant={plant} showForm={onShowForm} />
         }
-        return <AreaEmpty key={i} location_in_area={i + 1} garden_id={id} showForm={onShowForm} />
     })
     
     return (

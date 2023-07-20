@@ -42,9 +42,6 @@ function GardenAreas({areas, addNewPlant, editPlant, deletePlant}) {
         setShowForm(false)
     }
 
-    function onFormButtonClick() {
-        setShowForm(true);
-    }
     return (
         <div className="container text-center">
             <div className="border border-dark-subtle row justify-content-evenly shadow">
