@@ -45,7 +45,6 @@ function GardenAreas({areas, addNewPlant, editPlant, deletePlant}) {
     return (
         <div className="container text-center">
             <div className="border border-dark-subtle row justify-content-evenly shadow">
-                <p>Click a plant to edit it.</p>
             {!showForm ? areaElements : form}
             </div>
         </div>

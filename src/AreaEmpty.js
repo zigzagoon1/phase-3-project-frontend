@@ -8,9 +8,9 @@ function AreaEmpty({garden_id, location_in_area, showForm}) {
         showForm(false, location_in_area, garden_id);
     }
 
-    let bootstrap = "col-6 border px-auto py-3 text-center btn-danger";
+    let bootstrap = "col-6 border px-auto py-3 text-center btn";
     if (location_in_area === 3) {
-        bootstrap = "col-12 border px-auto py-3 text-center btn-danger";
+        bootstrap = "col-12 border px-auto py-3 text-center";
     }
     return (
         <Button className={bootstrap} onClick={showFormOnClick}>

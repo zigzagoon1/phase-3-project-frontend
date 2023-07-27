@@ -23,7 +23,6 @@ function GardenArea({plants, id, number_of_plants, showForm}) {
 
 
         if (!locations.find(x => x === i + 1)) {
-            console.log("didn't find match")
             return <AreaEmpty key={i} location_in_area={i + 1} garden_id={id} showForm={onShowForm} />
         }
         else {

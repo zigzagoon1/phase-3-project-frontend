@@ -1,7 +1,6 @@
 import React from 'react';
+import Header from './Header.js';
 import Home from './Home.js';
-import MyGarden from './MyGarden.js';
-import Plants from './Plants.js';
 import GardenAreas from './GardenAreas.js';
 import {Routes, Route } from 'react-router-dom';
 import {useState, useEffect} from 'react';
@@ -10,7 +9,6 @@ import {useState, useEffect} from 'react';
 //TODO: ability to edit shape of garden (post-course)
 function App() {
   const [areas, setGardenAreas] = useState([]);
-  const [plants, setPlants] = useState([]);
 
   useEffect(() => {
     fetchAreas();
@@ -66,9 +64,9 @@ function App() {
 
   return (
     <React.Fragment>
-      <Home/>
+      <Header/>
       <Routes>
-        <Route path="/" element={<MyGarden areas={areas} plants={plants}/>} />
+        <Route path="/" element={<Home areas={areas}/>} />
         <Route path="/areas" element={<GardenAreas areas={areas} addNewPlant={handleAddPlant} 
         editPlant={handleEditPlant} deletePlant={handleDeletePlant}/>} />
       </Routes>
