@@ -82,11 +82,11 @@ return (
         <form onSubmit={handleSubmit} className="border shadow-sm">
             <h1 className="text-center">Plant Form</h1>
             <p className="text-center fs-6 m-auto">Starred (*) items are required.</p>
-            <label htmlFor="garden_area_id" className="col-4 text-end px-2 my-2">Enter the garden area number to place your plant in:* </label>
+            <label htmlFor="garden_area_id" className="col-4 text-start px-2 my-2">Garden Area number to place plant in:* </label>
             <input name="garden_area_id" className="col-6" type="text" onChange={handleChange} value={values.garden_area_id}></input>
             <label htmlFor="name" className="col-4 text-end px-2 my-2">Enter the name of your plant:* </label>
             <input name="name" className="col-6 my-2" type="text" onChange={handleChange} value={values.name}></input>
-            <label htmlFor="location_in_area" className="col-4 text-end">Enter the location number to <br></br>place your plant in a garden area:* </label>
+            <label htmlFor="location_in_area" className="col-4 text-start">Location number within area to place plant in:* </label>
             <input name="location_in_area" className="col-6" type="text" onChange={handleChange} value={values.location_in_area}></input>
             <label htmlFor="latin_name" className="col-4 text-end px-2 my-2">Latin Name: </label>
             <input name="latin_name" type="text" className="col-6" onChange={handleChange} value={values.latin_name}></input>
@@ -96,7 +96,7 @@ return (
             <input name="width" type="text" className="col-6" onChange={handleChange} value={values.width}></input>
             <label htmlFor="hardiness_zones" className="col-4 text-end px-2">Hardiness Zones </label>
             <input name="hardiness_zones" className="col-6" type="text" onChange={handleChange} value={values.hardiness_zones}></input>
-            <label htmlFor="description" className="col-4 text-end px-2 my-2">Enter a description of your plant: </label>
+            <label htmlFor="description" className="col-4 text-end px-2 my-2">Description of plant: </label>
             <input name="description" className="col-6" type="text" onChange={handleChange} value={values.description}></input>
             <div className="text-center py-4">
             <input className="col-2"type="submit"></input>

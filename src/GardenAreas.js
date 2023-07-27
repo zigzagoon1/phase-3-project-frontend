@@ -2,7 +2,6 @@ import React from "react";
 import GardenArea from "./GardenArea";
 import PlantForm from "./PlantForm";
 import { useState } from "react";
-import {Button} from 'react-bootstrap'
 //all garden areas, for rendering /areas Route
 //contains each garden area organised on screen by location
 //

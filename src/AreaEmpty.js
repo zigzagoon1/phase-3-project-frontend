@@ -1,7 +1,5 @@
 import React from "react";
 import { Button } from "react-bootstrap";
-import { useState } from "react";
-import PlantForm from "./PlantForm";
 function AreaEmpty({garden_id, location_in_area, showForm}) {
 
     function showFormOnClick() {

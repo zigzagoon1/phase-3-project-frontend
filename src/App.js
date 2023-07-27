@@ -58,7 +58,9 @@ function App() {
     .then(() => {
     fetchAreas();
   })
+  }
 
+  function handleAddArea(area){
 
   }
 
@@ -66,7 +68,7 @@ function App() {
     <React.Fragment>
       <Header/>
       <Routes>
-        <Route path="/" element={<Home areas={areas}/>} />
+        <Route path="/" element={<Home areas={areas} addNewPlant={handleAddPlant} addNewArea={handleAddArea}/>} />
         <Route path="/areas" element={<GardenAreas areas={areas} addNewPlant={handleAddPlant} 
         editPlant={handleEditPlant} deletePlant={handleDeletePlant}/>} />
       </Routes>
