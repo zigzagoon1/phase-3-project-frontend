@@ -61,7 +61,17 @@ function App() {
   }
 
   function handleAddArea(area){
-
+    fetch('http://localhost:9292/areas', {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(area) 
+    })
+    .then(r => r.json())
+    .then(() => {
+      fetchAreas();
+    })
   }
 
   return (
