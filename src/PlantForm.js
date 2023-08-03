@@ -99,7 +99,7 @@ return (
             <label htmlFor="description" className="col-4 text-end px-2 my-2">Description of plant: </label>
             <input name="description" className="col-6" type="text" onChange={handleChange} value={values.description}></input>
             <div className="text-center py-4">
-            <input className="col-2"type="submit"></input>
+            <input name="submit" className="col-2"type="submit"></input>
             {btn}
             </div>
 

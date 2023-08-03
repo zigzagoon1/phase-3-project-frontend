@@ -31,13 +31,21 @@ function App() {
         body: JSON.stringify(newPlant)
       })
       .then(res => res.json())
-      .then(() => {
-        fetchAreas();
+      .then((plant) => {
+        const updatedAreas = areas.map((area) => {
+          if (area.id === plant.garden_area_id) {
+            return {...area, plants: [...area.plants, plant]}
+          }
+          else {
+            return area;
+          }
+        })
+        setGardenAreas(updatedAreas)
       })
+
   }
 
   function handleEditPlant(plant) {
-    console.log(plant);
     fetch(`http://localhost:9292/plants/${plant.id}`, {
       method: "PATCH",
       headers: {
@@ -46,8 +54,26 @@ function App() {
       body: JSON.stringify(plant)
     })
     .then(res => res.json())
-    .then(() => {
-      fetchAreas()
+    .then((p) => {
+      console.log(p)
+      const updatedAreas = areas.map((area) => {
+        if (area.id === p.garden_area_id) {
+          const updatedPlants = area.plants.map((plant) => {
+            if (plant.id === p.id) {
+              return p;
+            }
+            else {
+              return plant;
+            }
+          })
+          area.plants = updatedPlants;
+          return area;
+        }
+        else {
+          return area;
+        }
+      })
+      setGardenAreas(updatedAreas);
     })
   }
 
@@ -56,7 +82,18 @@ function App() {
       method: "DELETE"
     })
     .then(() => {
-    fetchAreas();
+      console.log(plant);
+      const updatedAreas = areas.map((area) => {
+        if (area.id === plant.garden_area_id) {
+          area.plants = area.plants.filter(x => x.id !== plant.id);
+          console.log(area.plants);
+          return area;
+        }
+        else {
+          return area;
+        }
+      })
+      setGardenAreas(updatedAreas);
   })
   }
 
@@ -69,8 +106,10 @@ function App() {
       body: JSON.stringify(area) 
     })
     .then(r => r.json())
-    .then(() => {
-      fetchAreas();
+    .then((a) => {
+      const updatedAreas = [...areas, a];
+      console.log(updatedAreas);
+      setGardenAreas(updatedAreas);
     })
   }
 
